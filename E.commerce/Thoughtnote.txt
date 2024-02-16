@@ -1,0 +1,139 @@
+Folder Structure:
+---------------------------------------------------------------------------------------------------------------------------------------	
+	common=>header.html					
+		footer.html
+	
+	men=>	m-all.html
+		m-boots.html
+		m-flats.html
+		m-loafers.html
+		m-shoes.html
+		m-sneakers.html
+
+	women=>	w-all.html
+		m-boots.html
+		m-flats.html
+		m-heels.html
+		m-shoes.html
+		m-sneakers.html
+	
+	kids.html
+	all-products.html
+	cart.html
+	contactus.html
+	home.html
+	login.html
+	code.js
+	style.css
+
+
+External resources:
+Font Awesome for icons.
+jQuery library for JavaScript.
+Bootstrap CSS and JS for styling and functionality.
+
+Addditional info:
+<div id="header"> and <div id="footer">: Placeholder divs for potential header and footer content in every html page to include them dynamically.
+Bootstrap is included to facilitate responsive design, ensuring the page adapts well to different screen sizes.
+
+Product Pages:
+All product pages like women(shoes,heels,boots,..), men(shoes,flats,loafers..),kids,etc. have similar structure with dynamic headers and footers.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+CODE.JS
+------------------------------------------------------------------------------------------------------------------------------------------
+The code uses jQuery to load the contents of the /common/header.html file into the HTML element with the ID "header" and the contents of the /common/footer.html file into the element with the ID "footer."
+A function named 'valid' responsible for validating login credentials.
+It retrieves the values entered in the email and password fields using document.querySelector.
+The login credentials are hardcoded — it checks if the entered email is "admin@admin.com" and the password is "123456."
+If the credentials match, an alert is triggered indicating a successful login; otherwise, an alert informs the user of incorrect email or password.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+HOME.HTML
+------------------------------------------------------------------------------------------------------------------------------------------
+Hero Section:
+Used a background image with a call-to-action button.
+A "Buy Now" button is styled using Bootstrap classes.
+
+Featured Products Carousel:
+Heading and a short description are added with inline styles.
+A Bootstrap carousel is used to display featured products in three intervals.
+Each carousel item contains a container with four cards (products).
+Each card includes an image, product details, price, and an "Add to Bag" button.
+
+Carousel Navigation:
+Navigation buttons (previous and next) are included for the carousel.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+CART.HTML
+------------------------------------------------------------------------------------------------------------------------------------------
+Shopping Cart Section:
+The cart is divided into two columns using the Bootstrap grid system.
+The left column contains a card displaying items in the cart, including an image, product details, and a form for adjusting quantity.
+The right column contains a summary card with details such as cost, shipping, and total. A checkout button is also present.
+
+Item Display in Cart:
+Each item in the cart is displayed using a nested grid system with three columns.
+The first column shows an image of the product.
+The second column displays the product name, price, and a trash can icon for removal.
+The third column contains a form to adjust the quantity using buttons for increase and decrease.
+
+Summary Section:
+The summary card on the right side displays the total cost, shipping cost, and overall total.
+A checkout button is provided at the bottom of the summary for further action.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+CONTACTUS.HTML
+------------------------------------------------------------------------------------------------------------------------------------------
+There is one row that contains two columns:
+Column 1 (Left):
+Includes an image with some styling.
+Column 2 (Right):
+Displays a contact form.
+The form includes fields for name, email, and a message, along with a submit button.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+LOGIN.HTML
+------------------------------------------------------------------------------------------------------------------------------------------
+Login Form:
+<form>: The login form.
+Styling: Inline styles are used to set margins and text alignment.
+<h2> and <h6>: Headings for the form and form fields.
+<input>: Text fields for email and password entry.
+<button>: Login button triggers the valid() function on click.
+
+JavaScript Functionality:
+The valid() function is expected to be defined in the code.js file and handles the validation logic for the login form.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+HEADER.HTML
+------------------------------------------------------------------------------------------------------------------------------------------
+Main Navbar:
+Utilizes Bootstrap's navbar component.
+Contains a logo, search bar, login form, and a shopping cart icon.
+The logo links to "/home.html," and the search bar and login form have responsive designs.
+
+Navbar2:
+Another Bootstrap navbar with a dark theme.
+Includes a toggler button for small screens and a navigation menu for larger screens.
+Navigation menu contains links to various sections like Home, All Products, Women's and Men's sections with subcategories, and links for Kids and Contact.
+
+Dropdown Menus:
+Women and Men sections have dropdown menus with subcategories such as shoes, heels, boots, flats, and sneakers.
+Each subcategory links to its respective page.
+
+Other Links:
+Direct links to Kids and Contact sections.
+
+Search Bar for Small Screens:
+A simplified search bar that appears for small screens only.
+Positioned at the bottom with rounded corners.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+FOOTER.HTML
+------------------------------------------------------------------------------------------------------------------------------------------The layout is organized using Bootstrap's grid system. Three columns are used for Women's, Men's, and Kids' sections, and one column for general links.
+Each section has links to specific pages (e.g., Women's Shoes, Men's Loafers) represented as anchor (<a>) elements.
+Horizontal rules with a white color are used to separate different link categories.
+Also Displayed copyright information with white text color in the end.
