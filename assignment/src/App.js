@@ -3,20 +3,18 @@ import './App.css';
 
 function App() {
   useGSAP(() => {
-
     const canvas = document.getElementsByTagName('canvas')[0];
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
 
     let config = {
-      SIM_RESOLUTION: 128,
-      TEXTURE_DOWNSAMPLE: 1,
-      DENSITY_DISSIPATION: 0.88,
+      TEXTURE_DOWNSAMPLE: 2,
+      DENSITY_DISSIPATION: 0.94,
       VELOCITY_DISSIPATION: 0.89,
-      PRESSURE_DISSIPATION: 0.8,
-      PRESSURE_ITERATIONS: 35,
+      PRESSURE_DISSIPATION: 0.9,
+      PRESSURE_ITERATIONS: 25,
       CURL: 28,
-      SPLAT_RADIUS: 0.001
+      SPLAT_RADIUS: 0.0002
     };
 
 
@@ -43,7 +41,7 @@ function App() {
         supportLinearFiltering = gl.getExtension('OES_texture_half_float_linear');
       }
 
-      gl.clearColor(0.0, 0.0, 0.0, 1.0);
+      gl.clearColor(1.0, 1.0, 1.0, 1.0);
 
       const halfFloatTexType = isWebGL2 ? gl.HALF_FLOAT : halfFloat.HALF_FLOAT_OES;
       let formatRGBA;
@@ -422,7 +420,8 @@ function App() {
     const clearProgram = new GLProgram(baseVertexShader, clearShader);
     const displayProgram = new GLProgram(baseVertexShader, displayShader);
     const splatProgram = new GLProgram(baseVertexShader, splatShader);
-    const advectionProgram = new GLProgram(baseVertexShader, ext.supportLinearFiltering ? advectionShader : advectionManualFilteringShader);
+    const advectionProgram = new GLProgram(baseVertexShader,
+      ext.supportLinearFiltering ? advectionShader : advectionManualFilteringShader);
     const divergenceProgram = new GLProgram(baseVertexShader, divergenceShader);
     const curlProgram = new GLProgram(baseVertexShader, curlShader);
     const vorticityProgram = new GLProgram(baseVertexShader, vorticityShader);
@@ -438,11 +437,14 @@ function App() {
       const rg = ext.formatRG;
       const r = ext.formatR;
 
-      density = createDoubleFBO(2, textureWidth, textureHeight, rgba.internalFormat, rgba.format, texType, ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST);
-      velocity = createDoubleFBO(0, textureWidth, textureHeight, rg.internalFormat, rg.format, texType, ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST);
+      density = createDoubleFBO(2, textureWidth, textureHeight, rgba.internalFormat,
+        rgba.format, texType, ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST);
+      velocity = createDoubleFBO(0, textureWidth, textureHeight, rg.internalFormat, rg.format,
+        texType, ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST);
       divergence = createFBO(4, textureWidth, textureHeight, r.internalFormat, r.format, texType, gl.NEAREST);
       curl = createFBO(5, textureWidth, textureHeight, r.internalFormat, r.format, texType, gl.NEAREST);
-      pressure = createDoubleFBO(6, textureWidth, textureHeight, r.internalFormat, r.format, texType, gl.NEAREST);
+      pressure = createDoubleFBO(6, textureWidth, textureHeight, r.internalFormat,
+        r.format, texType, gl.NEAREST);
     }
 
     function createFBO(texId, w, h, internalFormat, format, type, param) {
@@ -663,7 +665,8 @@ function App() {
         pointers[i].down = true;
         pointers[i].x = touches[i].pageX;
         pointers[i].y = touches[i].pageY;
-        pointers[i].color = [Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2];
+        pointers[i].color = [Math.random() + 0.2, Math.random() + 0.2,
+        Math.random() + 0.2];
       }
     });
 
@@ -678,7 +681,7 @@ function App() {
           if (touches[i].identifier === pointers[j].id)
             pointers[j].down = false;
     });
-  })
+  });
   return (
     <div className="App">
       <div className="nav">
