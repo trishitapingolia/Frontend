@@ -13,10 +13,6 @@
         "src": "/(.*)",
         "dest": "/dist/$1"
       }
-    ],
-    "static": {
-      "source": "src/images",
-      "destination": "/images"
-    }
+    ]
   }
   
